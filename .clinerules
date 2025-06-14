@@ -1,0 +1,130 @@
+# Zenn Tech Articles Management Project Rules
+
+## プロジェクト概要
+Zennへの投稿用テック記事を管理するプロジェクトです。
+
+## ディレクトリ構造
+- `articles/`: 公開用記事（Zennに投稿される記事）
+- `books/`: 公開用本（Zennに投稿される本）
+- `drafts/`: 記事のドラフト（Zennには連携されない独自ディレクトリ）
+
+## ファイル命名規則
+
+### 記事ファイル（articles/）
+- ファイル名: `{slug}.md`
+- slug: 英数字とハイフンのみ、12-50文字
+- 例: `react-hooks-best-practices.md`
+
+### 本ファイル（books/）
+- ファイル名: `{slug}/config.yaml` および `{slug}/*.md`
+- 各章は `{slug}/chapter-{number}.md` 形式
+
+### ドラフトファイル（drafts/）
+- ファイル名: 自由形式（`draft-{topic}-{date}.md` を推奨）
+- 例: `draft-typescript-tips-2024-06-02.md`
+
+## Front Matter 規則
+
+### 記事（articles/）
+```yaml
+---
+title: "記事タイトル"
+emoji: "📝"
+type: "tech" # tech or idea
+topics: ["javascript", "react", "frontend"]
+published: true # true or false
+publication_name: "publication_name" # 所属publication（オプション）
+---
+```
+
+### 本（books/）
+```yaml
+title: "本のタイトル"
+summary: "本の概要"
+topics: ["javascript", "react"]
+published: true
+price: 0 # 0=無料, 有料の場合は価格を設定
+chapters:
+  - chapter-01
+  - chapter-02
+```
+
+### ドラフト（drafts/）
+```yaml
+---
+title: "ドラフトタイトル"
+target: "article" # article or book
+status: "writing" # planning, writing, reviewing, ready
+topics: ["javascript"]
+notes: "執筆メモやアイデア"
+---
+```
+
+## コンテンツ作成ガイドライン
+
+### 記事品質基準
+- タイトルは具体的で検索しやすいものにする
+- 導入部で記事の目的と対象読者を明確にする
+- コードブロックには適切な言語指定を行う
+- 見出しは階層構造を適切に保つ（H2→H3→H4）
+- 最低1000文字以上を目安とする
+
+### コードブロック規則
+- 言語指定を必ず行う: ```javascript, ```typescript, ```bash等
+- 長いコードは適切にコメントを追加
+- 実行可能なサンプルコードを提供
+
+### 画像・リソース
+- 画像は記事と同じディレクトリまたは`images/`ディレクトリに配置
+- ファイル名は記事のslugと関連付ける
+- 代替テキストを必ず設定
+
+## ワークフロー
+
+### 新規記事作成
+1. `drafts/`でアイデアとアウトラインを作成
+2. 内容を執筆・校正
+3. `articles/`に移動してfront matterを調整
+4. `published: false`で一旦保存
+5. 最終確認後`published: true`に変更
+
+### ドラフト管理
+- アイデア段階: `status: "planning"`
+- 執筆中: `status: "writing"`
+- レビュー中: `status: "reviewing"`
+- 投稿準備完了: `status: "ready"`
+
+## 品質チェックリスト
+- [ ] タイトルが具体的で魅力的
+- [ ] 適切なemoji選択
+- [ ] topics配列が関連技術を適切に表現
+- [ ] コードブロックに言語指定
+- [ ] 見出し階層が適切
+- [ ] 誤字脱字チェック完了
+- [ ] リンクが正常に動作
+- [ ] スマートフォンでの読みやすさ確認
+
+## 禁止事項
+- 機密情報や個人情報の記載
+- 著作権を侵害するコンテンツ
+- 不適切な表現や差別的内容
+- 外部サービスのAPIキー等の秘匿情報
+
+## 推奨事項
+- 定期的な記事の見直しと更新
+- 読者からのフィードバックを活用
+- トレンドに合わせたトピック選択
+- 他の記事との内部リンク活用
+- SEOを意識したキーワード選択
+
+## コマンド例
+```bash
+# 新しい記事ドラフト作成
+touch drafts/draft-new-topic-$(date +%Y-%m-%d).md
+
+# ドラフトから記事に移動
+mv drafts/draft-topic.md articles/topic-name.md
+
+# Zenn CLIでプレビュー（プロジェクトルートで実行）
+npx zenn preview
+```
