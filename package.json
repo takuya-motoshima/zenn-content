@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "zenn-cli": "^0.1.161"
+  "devDependencies": {
+    "zenn-cli": "^0.2.1"
   }
 }

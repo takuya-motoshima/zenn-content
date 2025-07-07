@@ -137,7 +137,7 @@
 - バックエンド: Node.js, Express
 - 画像アップロード: multer
 - AI連携: @google/generative-ai
-- モデル: gemini-2.5-flash-preview-05-20（画像入力対応）
+- モデル: gemini-2.5-flash（画像入力対応）
 - 環境変数: dotenv
 - E2Eテスト: Playwright
 
