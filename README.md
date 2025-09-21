@@ -2,7 +2,7 @@
 
 Zennへの投稿用テック記事を管理するためのプロジェクトです。
 
-## 📁 プロジェクト構成
+## プロジェクト構成
 
 ```
 .
@@ -16,7 +16,7 @@ Zennへの投稿用テック記事を管理するためのプロジェクトで�
 └── README.md
 ```
 
-## 🚀 セットアップ
+## セットアップ
 
 ### 1. リポジトリのクローン
 ```bash
@@ -34,7 +34,7 @@ npm install
 npx zenn init
 ```
 
-## 📝 基本的な使い方
+## 基本的な使い方
 
 ### 記事の作成
 
@@ -71,7 +71,7 @@ touch books/book-slug/config.yaml
 npx zenn preview
 ```
 
-## 📂 ディレクトリの使い分け
+## ディレクトリの使い分け
 
 - **articles/**: Zennに公開する記事。`published: true`で投稿される
 - **books/**: Zennに公開する本。各章ごとにファイルを分割
@@ -96,7 +96,7 @@ ls -la drafts/
 grep -r "published: false" articles/
 ```
 
-## 🔗 関連リンク
+## 関連リンク
 
 - [Zenn公式ドキュメント](https://zenn.dev/zenn/articles/zenn-cli-guide)
 - [Zenn CLI](https://github.com/zenn-dev/zenn-editor)
